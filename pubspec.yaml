@@ -1,7 +1,7 @@
 name: tictactor
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
@@ -19,9 +19,9 @@ dev_dependencies:
 
 flutter:
   fonts:
-    - family: Cooper
-      fonts:
-        - asset: fonts/Cooper.ttf
     - family: KiwiMaru
       fonts:
         - asset: fonts/KiwiMaru.ttf
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins.ttf

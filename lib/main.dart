@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Tic Tac Toe",
       home: HomePage(),
-      theme: ThemeData(fontFamily: 'Cooper'),
+      theme: ThemeData(fontFamily: 'Poppins'),
     );
   }
 }
