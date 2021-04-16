@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:tictactor/pages/game_page.dart';
 import 'package:tictactor/widgets/enter_username.dart';
 
+import '../constants.dart';
+
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   // variables
   static const changeButton = false;
-  Color _bg = const Color.fromRGBO(223, 75, 75, 1.0);
+
   BorderRadius _br = const BorderRadius.all(Radius.circular(25.0));
 
   // build method
@@ -14,7 +16,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // scaffold will have a Stack with children and spacers between.
     return Scaffold(
-      backgroundColor: _bg,
+      backgroundColor: bg,
       body: Stack(
         alignment: AlignmentDirectional.centerStart,
         children: <Widget>[
@@ -63,7 +65,7 @@ class HomePage extends StatelessWidget {
                         height: 50,
                         alignment: Alignment.center,
                         child: Text(
-                          "Login",
+                          "Play Now",
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
