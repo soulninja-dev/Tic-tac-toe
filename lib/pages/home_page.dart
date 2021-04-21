@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                   Text(
                     "Tic Tac Toe",
                     style: TextStyle(
-                      fontSize: 60,
+                      fontSize: 55,
                       color: Colors.black,
                       shadows: [
                         Shadow(
