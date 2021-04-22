@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictactor/pages/game_page.dart';
 import 'package:tictactor/widgets/enter_username.dart';
-
 import '../constants.dart';
 
 // ignore: must_be_immutable
@@ -31,10 +30,10 @@ class HomePage extends StatelessWidget {
                     "Tic Tac Toe",
                     style: TextStyle(
                       fontSize: 55,
-                      color: Colors.black,
+                      color: textColor,
                       shadows: [
                         Shadow(
-                          color: Colors.black26,
+                          color: Colors.white10,
                           offset: Offset(5, 5),
                           blurRadius: 1.0,
                         ),
