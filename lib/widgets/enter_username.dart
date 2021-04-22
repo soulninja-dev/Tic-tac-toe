@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactor/constants.dart';
 
 class EnterUsername extends StatelessWidget {
   const EnterUsername({
@@ -13,7 +14,7 @@ class EnterUsername extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       showCursor: true,
-      cursorColor: Colors.black,
+      cursorColor: textColor,
       maxLines: 1,
       keyboardType: TextInputType.name,
       cursorHeight: 28,
@@ -33,22 +34,20 @@ class EnterUsername extends StatelessWidget {
           fontSize: 17,
           fontFamily: "KiwiMaru",
           fontWeight: FontWeight.bold,
-          color: Colors.black38,
+          color: Colors.white30,
         ),
         labelStyle: TextStyle(
           fontWeight: FontWeight.normal,
-          color: Colors.black,
+          color: Colors.white54,
           fontFamily: "KiwiMaru",
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
+            color: textColor,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-          ),
+          borderSide: BorderSide(color: Colors.white60),
         ),
       ),
     );
