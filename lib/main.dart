@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             backgroundColor: new Color(0xff2D5F6E),
+            elevation: 5.0,
           ),
         ),
       ),
