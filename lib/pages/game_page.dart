@@ -7,55 +7,86 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-  static const toPlay = "X";
+  changeToPlay(String current) {
+    if (current == "X") {
+      setState(() {
+        toPlay = "Y";
+      });
+    }
+    if (current == "Y") {
+      setState(() {
+        toPlay = "X";
+      });
+    }
+  }
+
+  static String toPlay = "X";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 60, 10, 0),
-        child: GridView.count(
-          crossAxisSpacing: 10.0,
-          mainAxisSpacing: 10.0,
-          crossAxisCount: 3,
-          children: <Widget>[
-            TextButton(
-              onPressed: () => print("pressed 1"),
-              child: Text("here1"),
+      body: Stack(
+        children: [
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(5, 75, 5, 0),
+            child: GridView.count(
+              crossAxisSpacing: 10.0,
+              mainAxisSpacing: 10.0,
+              crossAxisCount: 3,
+              children: <Widget>[
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here1"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here2"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here3"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here4"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here5"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here6"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here7"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here8"),
+                ),
+                TextButton(
+                  onPressed: () => changeToPlay(toPlay),
+                  child: Text("here9"),
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () => print("pressed 2"),
-              child: Text("here2"),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 420),
+              child: Text(
+                "To Play: $toPlay",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: "Poppins",
+                  fontSize: 25,
+                ),
+              ),
             ),
-            TextButton(
-              onPressed: () => print("pressed 3"),
-              child: Text("here3"),
-            ),
-            TextButton(
-              onPressed: () => print("pressed 4"),
-              child: Text("here4"),
-            ),
-            TextButton(
-              onPressed: () => print("pressed 5"),
-              child: Text("here4"),
-            ),
-            TextButton(
-              onPressed: () => print("pressed 6"),
-              child: Text("here4"),
-            ),
-            TextButton(
-              onPressed: () => print("pressed 7"),
-              child: Text("here4"),
-            ),
-            TextButton(
-              onPressed: () => print("pressed 8"),
-              child: Text("here4"),
-            ),
-            TextButton(
-              onPressed: () => print("pressed 9"),
-              child: Text("here4"),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
       backgroundColor: bg,
       appBar: AppBar(
