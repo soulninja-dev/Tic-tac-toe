@@ -59,11 +59,10 @@ class _GamePageState extends State<GamePage> {
       ),
       backgroundColor: bg,
       appBar: AppBar(
+        leading: Text(""),
         backgroundColor: bg,
         title: Text("Tic Tac Toe"),
-        actions: [
-          Text("$toPlay to play"),
-        ],
+        centerTitle: true,
       ),
     );
   }
