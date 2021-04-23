@@ -17,11 +17,31 @@ class _GamePageState extends State<GamePage> {
   [x] function play -> to take in index and change text on it to whatever toPlay is
                       -> should change played array also
 
-  [] function botPlay -> random from 0-8 and check if the box is taken in played array and call play
+  [x] function botPlay -> random from 0-8 and check if the box is taken in played array and call play
 
   [x] function change_toPlay -> change the text in toPlay
 
   [x] String toPlay -> variable X or Y to show in the bottom part 
+
+
+  flow: 
+
+  button is clicked 
+        ||
+  play(index) is called with index
+        ||
+  play(index) updates text and playedArr
+        ||
+  botPlay() is called
+        ||
+  checks if playedArr is true, if yes calls botPlay again else calls play(index)
+        ||
+    { CHECK NEEDED HERE }
+        ||
+  then play(index) will play the bot's move 
+        ||
+  change_toPlay is called ;-;
+
 */
 
   List<bool> playedArr = [
