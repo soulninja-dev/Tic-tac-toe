@@ -7,6 +7,19 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
+/*
+  Boolean played array -> to store which buttons are clicked
+  
+  function play -> to take in index and change text on it to whatever toPlay is
+                      -> should change played array also
+
+  function botPlay -> random from 0-8 and check if the box is taken in played array and call play
+
+  function change_toPlay -> change the text in toPlay
+
+  String toPlay -> variable X or Y to show in the bottom part 
+*/
+
   // ignore: non_constant_identifier_names
   change_toPlay(String current) {
     if (current == "X") {
@@ -21,18 +34,6 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
-/*
-  Boolean played array -> to store which buttons are clicked
-  
-  function play -> to take in index and change text on it to whatever toPlay is
-                      -> should change played array also
-
-  function botPlay -> random from 0-8 and check if the box is taken in played array and call play
-
-  function change_toPlay -> change the text in toPlay
-
-  String toPlay -> variable X or Y to show in the bottom part 
-*/
   static String toPlay = "X";
   @override
   Widget build(BuildContext context) {
