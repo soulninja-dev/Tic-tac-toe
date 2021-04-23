@@ -20,6 +20,34 @@ class _GamePageState extends State<GamePage> {
   String toPlay -> variable X or Y to show in the bottom part 
 */
 
+  List<bool> playedArr = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
+
+  List<String> text = [
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+  ];
+
+  static String toPlay = "X";
+
+  play(int index) {}
+
   // ignore: non_constant_identifier_names
   change_toPlay(String current) {
     if (current == "X") {
@@ -34,13 +62,11 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
-  static String toPlay = "X";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Spacer(),
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 75, 5, 0),
             child: GridView.count(
@@ -49,40 +75,43 @@ class _GamePageState extends State<GamePage> {
               crossAxisCount: 3,
               children: <Widget>[
                 TextButton(
-                  onPressed: () => change_toPlay(toPlay),
-                  child: Text("here1"),
+                  onPressed: () {
+                    change_toPlay(toPlay);
+                    print(playedArr[3]);
+                  },
+                  child: Text(text[0]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here2"),
+                  child: Text(text[1]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here3"),
+                  child: Text(text[2]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here4"),
+                  child: Text(text[3]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here5"),
+                  child: Text(text[4]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here6"),
+                  child: Text(text[5]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here7"),
+                  child: Text(text[6]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here8"),
+                  child: Text(text[7]),
                 ),
                 TextButton(
                   onPressed: () => change_toPlay(toPlay),
-                  child: Text("here9"),
+                  child: Text(text[8]),
                 ),
               ],
             ),
