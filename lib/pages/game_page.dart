@@ -46,7 +46,10 @@ class _GamePageState extends State<GamePage> {
 
   static String toPlay = "X";
 
-  play(int index) {}
+  play(int index) {
+    text[index] = toPlay;
+    playedArr[index] = true;
+  }
 
   // ignore: non_constant_identifier_names
   change_toPlay(String current) {
@@ -77,7 +80,6 @@ class _GamePageState extends State<GamePage> {
                 TextButton(
                   onPressed: () {
                     change_toPlay(toPlay);
-                    print(playedArr[3]);
                   },
                   child: Text(text[0]),
                 ),
