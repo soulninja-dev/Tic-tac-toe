@@ -8,63 +8,54 @@ class GamePage extends StatefulWidget {
   _GamePageState createState() => _GamePageState();
 }
 
-List<bool> playedArr = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
-];
-
 List<String> text = [
-  " ",
-  " ",
-  " ",
-  " ",
-  " ",
-  " ",
-  " ",
-  " ",
-  " ",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
 ];
-
-String toPlay = "X";
 
 class _GamePageState extends State<GamePage> {
   Random rng = new Random();
 
-  play(int index) {
-    text[index] = toPlay;
-    playedArr[index] = true;
+  play(int index, bool isPlayer) {
+    // if player, changetoplay
+    if (isPlayer) {
+      if (text[index] == "") {
+        setState(() {
+          text[index] = "X";
+        });
+      }
+      botPlay();
+    } else {
+      if (text[index] == "") {
+        setState(() {
+          text[index] = "O";
+        });
+      }
+    }
   }
 
   botPlay() {
     int randomIndex = rng.nextInt(8);
-    if (playedArr[randomIndex] == true) {
+    if (text[randomIndex] != "") {
       botPlay();
     } else {
       // changes toPlay so that bot can play
-      change_toPlay(toPlay);
-      play(randomIndex);
+      play(randomIndex, false);
     }
   }
 
-  // ignore: non_constant_identifier_names
-  change_toPlay(String current) {
-    if (current == "X") {
-      setState(() {
-        toPlay = "Y";
-      });
-    }
-    if (current == "Y") {
-      setState(() {
-        toPlay = "X";
-      });
-    }
+  // initState is supposed to be called every time the page opens
+  @override
+  void initState() {
+    super.initState();
+    botPlay();
   }
 
   @override
@@ -81,73 +72,55 @@ class _GamePageState extends State<GamePage> {
               children: <Widget>[
                 TextButton(
                   onPressed: () {
-                    play(0);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    if (text[0] == "") play(0, true);
                   },
                   child: Text(text[0]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(1);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    if (text[1] == "") play(1, true);
                   },
                   child: Text(text[1]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(2);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    if (text[2] == "") play(2, true);
                   },
                   child: Text(text[2]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(3);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    play(3, true);
                   },
                   child: Text(text[3]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(4);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    play(4, true);
                   },
                   child: Text(text[4]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(5);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    play(5, true);
                   },
                   child: Text(text[5]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(6);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    play(6, true);
                   },
                   child: Text(text[6]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(7);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    play(7, true);
                   },
                   child: Text(text[7]),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(8);
-                    botPlay();
-                    change_toPlay(toPlay);
+                    play(8, true);
                   },
                   child: Text(text[8]),
                 ),
@@ -158,7 +131,7 @@ class _GamePageState extends State<GamePage> {
             child: Padding(
               padding: const EdgeInsets.only(top: 420),
               child: Text(
-                "You are: $toPlay",
+                "You are: X",
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: "Poppins",
@@ -179,36 +152,3 @@ class _GamePageState extends State<GamePage> {
     );
   }
 }
-
-/*
-  [x] Boolean played array -> to store which buttons are clicked
-  
-  [x] function play -> to take in index and change text on it to whatever toPlay is
-                      -> should change played array also
-
-  [x] function botPlay -> random from 0-8 and check if the box is taken in played array and call play
-
-  [x] function change_toPlay -> change the text in toPlay
-
-  [x] String toPlay -> variable X or Y to show in the bottom part 
-
-
-  flow: 
-
-  button is clicked 
-        ||
-  play(index) is called with index
-        ||
-  play(index) updates text and playedArr
-        ||
-  botPlay() is called
-        ||
-  checks if playedArr is true, if yes calls botPlay again else calls play(index)
-        ||
-    { CHECK NEEDED HERE }
-        ||
-  then play(index) will play the bot's move 
-        ||
-  change_toPlay is called ;-;
-
-*/
