@@ -52,11 +52,11 @@ class _GamePageState extends State<GamePage> {
   }
 
   // initState is supposed to be called every time the page opens
-  @override
-  void initState() {
-    super.initState();
-    botPlay();
-  }
+  //@override
+  //void initState() {
+  //  super.initState();
+  //  botPlay();
+  // }
 
   @override
   Widget build(BuildContext context) {
