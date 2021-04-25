@@ -62,21 +62,26 @@ class _GamePageState extends State<GamePage> {
   @override
   void initState() {
     super.initState();
+    // calling botPlay when the page is opened, so that the bot plays first and there is no empty box in the end.
     botPlay();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Scaffold so that there is place for appbar etc.
     return Scaffold(
+      // stack so that we can place more than 1 item in the body
       body: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 75, 5, 0),
+            // gridview.count is a good widget to build grids.
             child: GridView.count(
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
               crossAxisCount: 3,
               children: <Widget>[
+                // each TextButton is a grid which can be pressed.
                 TextButton(
                   onPressed: () {
                     if (text[0] == "") play(0, true);
@@ -134,6 +139,7 @@ class _GamePageState extends State<GamePage> {
               ],
             ),
           ),
+          // the text to show what character the player is
           Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 420),
@@ -150,6 +156,7 @@ class _GamePageState extends State<GamePage> {
         ],
       ),
       backgroundColor: bg,
+      // app bar to show some info
       appBar: AppBar(
         leading: Text(""),
         backgroundColor: bg,
