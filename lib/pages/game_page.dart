@@ -23,16 +23,22 @@ List<String> text = [
 class _GamePageState extends State<GamePage> {
   Random rng = new Random();
 
+  // index is the position of the button in the grid,
+  // isPlayer is true when the player clicks button and false when bot clicks button
   play(int index, bool isPlayer) {
-    // if player, changetoplay
+    // if its a player, then check if the box isnt already taken
+    // then setState the text of that index to "x"
     if (isPlayer) {
       if (text[index] == "") {
         setState(() {
           text[index] = "X";
         });
       }
+      // calling botPlay so that the game can continue
       botPlay();
     } else {
+      // here only the bot can come in.
+      // same check if the box isnt already taken. then changing text of index to "O"
       if (text[index] == "") {
         setState(() {
           text[index] = "O";
@@ -41,6 +47,7 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
+  // this function makes a random number using the nextInt function of Random class.
   botPlay() {
     int randomIndex = rng.nextInt(8);
     if (text[randomIndex] != "") {
@@ -52,11 +59,11 @@ class _GamePageState extends State<GamePage> {
   }
 
   // initState is supposed to be called every time the page opens
-  //@override
-  //void initState() {
-  //  super.initState();
-  //  botPlay();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    botPlay();
+  }
 
   @override
   Widget build(BuildContext context) {
