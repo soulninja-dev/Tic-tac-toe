@@ -9,15 +9,15 @@ class GamePage extends StatefulWidget {
 }
 
 List<String> text = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
 ];
 
 class _GamePageState extends State<GamePage> {
@@ -25,7 +25,7 @@ class _GamePageState extends State<GamePage> {
 
   // index is the position of the button in the grid,
   // isPlayer is true when the player clicks button and false when bot clicks button
-  play(int index, bool isPlayer) {
+  void play(int index, bool isPlayer) {
     // if its a player, then check if the box isnt already taken
     // then setState the text of that index to "x"
     if (isPlayer) {
@@ -48,7 +48,7 @@ class _GamePageState extends State<GamePage> {
   }
 
   // this function makes a random number using the nextInt function of Random class.
-  botPlay() {
+  void botPlay() {
     int randomIndex = rng.nextInt(8);
     if (text[randomIndex] != "") {
       botPlay();
@@ -58,14 +58,34 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
+/*
+
+Possibilities to win:
+012
+345
+678
+036
+147
+258
+048
+246
+
+*/
+  // this will check if the game is finished or not
+  bool winCheck() {}
+
+  // check who won and navigate to that screen
+  void winnerScreen(String winner) {}
+/*
   // initState is supposed to be called every time the page opens
   @override
   void initState() {
     super.initState();
     // calling botPlay when the page is opened, so that the bot plays first and there is no empty box in the end.
+    // emptybox can be played if we click it twice 🤔
     botPlay();
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     // Scaffold so that there is place for appbar etc.
