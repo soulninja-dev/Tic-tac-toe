@@ -11,15 +11,15 @@ class GamePage extends StatefulWidget {
 }
 
 List<String> text = [
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
 ];
 
 class _GamePageState extends State<GamePage> {
@@ -30,11 +30,15 @@ class _GamePageState extends State<GamePage> {
   void play(int index, bool isPlayer) {
     // if its a player, then check if the box isnt already taken
     // then setState the text of that index to "x"
+
     if (isPlayer) {
       if (text[index] == "") {
         setState(() {
           text[index] = "X";
         });
+      }
+      if (winCheck()) {
+        winnerAlert("You");
       }
       // calling botPlay so that the game can continue
       botPlay();
@@ -45,6 +49,9 @@ class _GamePageState extends State<GamePage> {
         setState(() {
           text[index] = "O";
         });
+      }
+      if (winCheck()) {
+        winnerAlert("You");
       }
     }
   }
@@ -121,7 +128,7 @@ Possibilities to win:
     );
   }
 
-  /*
+/*
       // initState is supposed to be called every time the page opens
       @override
       void initState() {
@@ -130,7 +137,8 @@ Possibilities to win:
         // emptybox can be played if we click it twice 🤔
         botPlay();
       }
-    */
+*/
+
   @override
   Widget build(BuildContext context) {
     // Scaffold so that there is place for appbar etc.
