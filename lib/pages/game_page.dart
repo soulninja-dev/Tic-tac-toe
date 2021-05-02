@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:tictactor/constants.dart';
 
+import 'winner_page.dart';
+
 class GamePage extends StatefulWidget {
   @override
   _GamePageState createState() => _GamePageState();
@@ -110,17 +112,25 @@ Possibilities to win:
   }
 
   // check who won and navigate to that screen
-  void winnerScreen(String winner) {}
-/*
-  // initState is supposed to be called every time the page opens
-  @override
-  void initState() {
-    super.initState();
-    // calling botPlay when the page is opened, so that the bot plays first and there is no empty box in the end.
-    // emptybox can be played if we click it twice 🤔
-    botPlay();
+  void winnerAlert(String winner) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WinnerPage(winner),
+      ),
+    );
   }
-*/
+
+  /*
+      // initState is supposed to be called every time the page opens
+      @override
+      void initState() {
+        super.initState();
+        // calling botPlay when the page is opened, so that the bot plays first and there is no empty box in the end.
+        // emptybox can be played if we click it twice 🤔
+        botPlay();
+      }
+    */
   @override
   Widget build(BuildContext context) {
     // Scaffold so that there is place for appbar etc.
