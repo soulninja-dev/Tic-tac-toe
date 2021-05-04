@@ -51,7 +51,7 @@ class _GamePageState extends State<GamePage> {
         });
       }
       if (winCheck()) {
-        winnerAlert("You");
+        winnerAlert("Computer");
       }
     }
   }
@@ -138,7 +138,11 @@ Possibilities to win:
         botPlay();
       }
 */
-
+  var textstyle = TextStyle(
+    fontSize: 50,
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.bold,
+  );
   @override
   Widget build(BuildContext context) {
     // Scaffold so that there is place for appbar etc.
@@ -159,55 +163,79 @@ Possibilities to win:
                   onPressed: () {
                     if (text[0] == "") play(0, true);
                   },
-                  child: Text(text[0]),
+                  child: Text(
+                    text[0],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     if (text[1] == "") play(1, true);
                   },
-                  child: Text(text[1]),
+                  child: Text(
+                    text[1],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     if (text[2] == "") play(2, true);
                   },
-                  child: Text(text[2]),
+                  child: Text(
+                    text[2],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     play(3, true);
                   },
-                  child: Text(text[3]),
+                  child: Text(
+                    text[3],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     play(4, true);
                   },
-                  child: Text(text[4]),
+                  child: Text(text[4], style: textstyle),
                 ),
                 TextButton(
                   onPressed: () {
                     play(5, true);
                   },
-                  child: Text(text[5]),
+                  child: Text(
+                    text[5],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     play(6, true);
                   },
-                  child: Text(text[6]),
+                  child: Text(
+                    text[6],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     play(7, true);
                   },
-                  child: Text(text[7]),
+                  child: Text(
+                    text[7],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     play(8, true);
                   },
-                  child: Text(text[8]),
+                  child: Text(
+                    text[8],
+                    style: textstyle,
+                  ),
                 ),
               ],
             ),
