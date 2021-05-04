@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactor/constants.dart';
 
 // ignore: must_be_immutable
 class WinnerPage extends StatelessWidget {
@@ -22,6 +23,7 @@ class WinnerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: bg,
       child: Column(
         children: <Widget>[
           Text(
