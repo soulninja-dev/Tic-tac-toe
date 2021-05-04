@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:tictactor/constants.dart';
+import 'package:tictactor/pages/home_page.dart';
 
 import 'winner_page.dart';
 
@@ -118,6 +119,15 @@ Possibilities to win:
     return false;
   }
 
+  ongoBack(dynamic value) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(),
+      ),
+    );
+  }
+
   // check who won and navigate to that screen
   void winnerAlert(String winner) {
     Navigator.push(
@@ -125,7 +135,7 @@ Possibilities to win:
       MaterialPageRoute(
         builder: (context) => WinnerPage(winner),
       ),
-    );
+    ).then(ongoBack);
   }
 
 /*
