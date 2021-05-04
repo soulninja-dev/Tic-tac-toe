@@ -42,7 +42,9 @@ class _GamePageState extends State<GamePage> {
         winnerAlert("You");
       }
       // calling botPlay so that the game can continue
-      botPlay();
+      if (!winCheck()) {
+        botPlay();
+      }
     } else {
       // here only the bot can come in.
       // same check if the box isnt already taken. then changing text of index to "O"
@@ -120,7 +122,7 @@ Possibilities to win:
   }
 
   ongoBack(dynamic value) {
-    Navigator.push(
+    Navigator.pop(
       context,
       MaterialPageRoute(
         builder: (context) => HomePage(),
