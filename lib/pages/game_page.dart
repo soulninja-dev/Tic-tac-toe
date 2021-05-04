@@ -88,31 +88,31 @@ Possibilities to win:
       return true;
     }
     // 345
-    if (text[3] == text[4] && text[4] == text[5]) {
+    else if (text[3] == text[4] && text[4] == text[5]) {
       return true;
     }
     // 678
-    if (text[6] == text[7] && text[7] == text[8]) {
+    else if (text[6] == text[7] && text[7] == text[8]) {
       return true;
     }
     // 036
-    if (text[0] == text[3] && text[3] == text[6]) {
+    else if (text[0] == text[3] && text[3] == text[6]) {
       return true;
     }
     // 147
-    if (text[1] == text[4] && text[4] == text[7]) {
+    else if (text[1] == text[4] && text[4] == text[7]) {
       return true;
     }
     // 258
-    if (text[2] == text[5] && text[5] == text[8]) {
+    else if (text[2] == text[5] && text[5] == text[8]) {
       return true;
     }
     // 048
-    if (text[0] == text[4] && text[4] == text[8]) {
+    else if (text[0] == text[4] && text[4] == text[8]) {
       return true;
     }
     // 246
-    if (text[2] == text[4] && text[4] == text[6]) {
+    else if (text[2] == text[4] && text[4] == text[6]) {
       return true;
     }
     return false;
