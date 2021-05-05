@@ -7,6 +7,7 @@ import '../constants.dart';
 class HomePage extends StatelessWidget {
   // variables
   static const changeButton = false;
+
   BorderRadius _br = const BorderRadius.all(Radius.circular(25.0));
 
   // build method

@@ -71,7 +71,6 @@ class _GamePageState extends State<GamePage> {
   }
 
 /*
-
 Possibilities to win:
 012
 345
@@ -81,7 +80,6 @@ Possibilities to win:
 258
 048
 246
-
 */
   // simple check if the possibilities match or not
   // this will check if the game is finished or not
