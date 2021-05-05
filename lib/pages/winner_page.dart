@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tictactor/constants.dart';
+import 'package:tictactor/pages/game_page.dart';
 import '../functions.dart';
-import 'home_page.dart';
 
 // ignore: must_be_immutable
 class WinnerPage extends StatelessWidget {
@@ -46,8 +46,12 @@ class WinnerPage extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 Functions.reset();
-                Navigator.pop(context,
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                Navigator.pop(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GamePage(),
+                  ),
+                );
               },
               child: Text(
                 "Play again",

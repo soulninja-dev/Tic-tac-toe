@@ -20,9 +20,7 @@ List<String> text = [
   "",
   "",
 ];
-List<int> player;
-List<int> bot;
-String toPlay;
+int plays = 0;
 
 class _GamePageState extends State<GamePage> {
   Random rng = new Random();
@@ -46,17 +44,19 @@ class _GamePageState extends State<GamePage> {
     if (isPlayer) {
       if (text[index] == "") {
         setState(() {
+          plays++;
           text[index] = "X";
-          print("line 50");
-          print(text);
-          print("\n");
+          print(plays);
         });
+      }
+      if (plays == 9) {
+        winnerAlert("tie");
       }
       if (winCheck()) {
         winnerAlert("You");
       }
       // calling botPlay so that the game can continue
-      if (!winCheck()) {
+      if (!winCheck() && plays < 9) {
         botPlay();
       }
     } else {
@@ -64,11 +64,13 @@ class _GamePageState extends State<GamePage> {
       // same check if the box isnt already taken. then changing text of index to "O"
       if (text[index] == "") {
         setState(() {
+          plays++;
           text[index] = "O";
-          print("line 67");
-          print(text);
-          print("\n");
+          print(plays);
         });
+      }
+      if (plays == 9) {
+        winnerAlert("tie");
       }
       if (winCheck()) {
         winnerAlert("Computer");
