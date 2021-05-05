@@ -31,6 +31,7 @@ class _GamePageState extends State<GamePage> {
   void play(int index, bool isPlayer) {
     // if its a player, then check if the box isnt already taken
     // then setState the text of that index to "x"
+
     if (isPlayer) {
       if (text[index] == "") {
         setState(() {
@@ -118,17 +119,6 @@ Possibilities to win:
       return true;
     }
     return false;
-  }
-
-  bool tieCheck() {
-    int ctr = 0;
-    for (int i = 0; i <= text.length; i++) {
-      if (text[i] != "") ctr++;
-    }
-    if (ctr == text.length)
-      return true;
-    else
-      return false;
   }
 
   ongoBack(dynamic value) {
