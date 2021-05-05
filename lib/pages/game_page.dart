@@ -1,9 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:tictactor/constants.dart';
 import 'package:tictactor/pages/home_page.dart';
-
 import 'winner_page.dart';
 
 class GamePage extends StatefulWidget {
@@ -22,13 +20,26 @@ List<String> text = [
   "",
   "",
 ];
+List<int> player;
+List<int> bot;
+String toPlay;
 
 class _GamePageState extends State<GamePage> {
   Random rng = new Random();
 
-  // index is the position of the button in the grid,
-  // isPlayer is true when the player clicks button and false when bot clicks button
+  var textstyle = TextStyle(
+    fontSize: 50,
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.bold,
+  );
+
   void play(int index, bool isPlayer) {
+    // if (toPlay == "bot") bot.add(index);
+    // if (toPlay == "player") player.add(index);
+
+    // index is the position of the button in the grid,
+    // isPlayer is true when the player clicks button and false when bot clicks button
+
     // if its a player, then check if the box isnt already taken
     // then setState the text of that index to "x"
 
@@ -36,6 +47,9 @@ class _GamePageState extends State<GamePage> {
       if (text[index] == "") {
         setState(() {
           text[index] = "X";
+          print("line 50");
+          print(text);
+          print("\n");
         });
       }
       if (winCheck()) {
@@ -51,6 +65,9 @@ class _GamePageState extends State<GamePage> {
       if (text[index] == "") {
         setState(() {
           text[index] = "O";
+          print("line 67");
+          print(text);
+          print("\n");
         });
       }
       if (winCheck()) {
@@ -59,30 +76,16 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
-  // this function makes a random number using the nextInt function of Random class.
   void botPlay() {
+    // this function makes a random number using the nextInt function of Random class.
     int randomIndex = rng.nextInt(8);
     if (text[randomIndex] != "") {
       botPlay();
     } else {
-      // changes toPlay so that bot can play
       play(randomIndex, false);
     }
   }
 
-/*
-Possibilities to win:
-012
-345
-678
-036
-147
-258
-048
-246
-*/
-  // simple check if the possibilities match or not
-  // this will check if the game is finished or not
   bool winCheck() {
     // 012
     if (text[0] != "" && text[0] == text[1] && text[1] == text[2]) {
@@ -138,21 +141,6 @@ Possibilities to win:
     ).then(ongoBack);
   }
 
-/*
-      // initState is supposed to be called every time the page opens
-      @override
-      void initState() {
-        super.initState();
-        // calling botPlay when the page is opened, so that the bot plays first and there is no empty box in the end.
-        // emptybox can be played if we click it twice 🤔
-        botPlay();
-      }
-*/
-  var textstyle = TextStyle(
-    fontSize: 50,
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.bold,
-  );
   @override
   Widget build(BuildContext context) {
     // Scaffold so that there is place for appbar etc.
@@ -198,7 +186,7 @@ Possibilities to win:
                 ),
                 TextButton(
                   onPressed: () {
-                    play(3, true);
+                    if (text[3] == "") play(3, true);
                   },
                   child: Text(
                     text[3],
@@ -207,13 +195,13 @@ Possibilities to win:
                 ),
                 TextButton(
                   onPressed: () {
-                    play(4, true);
+                    if (text[4] == "") play(4, true);
                   },
                   child: Text(text[4], style: textstyle),
                 ),
                 TextButton(
                   onPressed: () {
-                    play(5, true);
+                    if (text[5] == "") play(5, true);
                   },
                   child: Text(
                     text[5],
@@ -222,7 +210,7 @@ Possibilities to win:
                 ),
                 TextButton(
                   onPressed: () {
-                    play(6, true);
+                    if (text[6] == "") play(6, true);
                   },
                   child: Text(
                     text[6],
@@ -231,7 +219,7 @@ Possibilities to win:
                 ),
                 TextButton(
                   onPressed: () {
-                    play(7, true);
+                    if (text[7] == "") play(7, true);
                   },
                   child: Text(
                     text[7],
@@ -240,7 +228,7 @@ Possibilities to win:
                 ),
                 TextButton(
                   onPressed: () {
-                    play(8, true);
+                    if (text[8] == "") play(8, true);
                   },
                   child: Text(
                     text[8],
@@ -250,6 +238,7 @@ Possibilities to win:
               ],
             ),
           ),
+
           // the text to show what character the player is
           Center(
             child: Padding(
@@ -277,3 +266,16 @@ Possibilities to win:
     );
   }
 }
+/*
+
+  - make 2 lists
+  - make a toplay var
+  - when a button is clicked, add the index to the crsp list
+  - and check if game is won, else set state.
+  - then call bot play
+  - bot play should first check if the match is won. else
+  - bot play should make a random index and check if its already taken.
+  - if not it should call itself again until it finds a proper index.
+  - once it finds the proper index, delay and setstate.
+  
+*/
