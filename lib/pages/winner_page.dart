@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictactor/constants.dart';
-
+import '../functions.dart';
 import 'home_page.dart';
 
 // ignore: must_be_immutable
@@ -45,7 +45,7 @@ class WinnerPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 50),
             child: TextButton(
               onPressed: () {
-                // Functions.reset(),
+                Functions.reset();
                 Navigator.pop(context,
                     MaterialPageRoute(builder: (context) => HomePage()));
               },
