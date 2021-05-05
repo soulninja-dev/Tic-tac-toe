@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tictactor/constants.dart';
 
+import 'home_page.dart';
+
 // ignore: must_be_immutable
 class WinnerPage extends StatelessWidget {
   String winner;
@@ -22,27 +24,40 @@ class WinnerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: bg,
-      child: Column(
+    return Scaffold(
+      backgroundColor: bg,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            checkWinner(),
-            style: TextStyle(
-              fontSize: 25,
-              fontFamily: "Poppins",
+          Center(
+            child: Text(
+              checkWinner(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontFamily: "Poppins",
+              ),
             ),
           ),
-          SizedBox(
-            height: 50,
-          ),
-          TextButton(
-              onPressed: null,
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: TextButton(
+              onPressed: () {
+                // Functions.reset(),
+                Navigator.pop(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              },
               child: Text(
                 "Play again",
-              )),
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
-        mainAxisAlignment: MainAxisAlignment.center,
       ),
     );
   }
