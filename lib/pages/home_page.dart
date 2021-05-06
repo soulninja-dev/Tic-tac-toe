@@ -46,32 +46,33 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 70),
                     child: EnterUsername(br: _br),
                   ),
-                  Material(
-                    borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
-                    color: Colors.black,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GamePage(),
-                          ),
-                        );
-                      },
-                      child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
-                        width: changeButton ? 50 : 130,
-                        height: 50,
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Play Now",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "KiwiMaru",
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                      color: Colors.black,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          primary: Colors.white,
+                          textStyle: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "Poppins",
                           ),
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GamePage(),
+                            ),
+                          );
+                        },
+                        child: Text("Play Now"),
                       ),
                     ),
                   ),
