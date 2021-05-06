@@ -27,7 +27,7 @@ class _GamePageState extends State<GamePage> {
   Random rng = new Random();
 
   var textstyle = TextStyle(
-    fontSize: SizeConfig.safeBlockHorizontal * 10,
+    fontSize: 50,
     fontFamily: "Poppins",
     fontWeight: FontWeight.bold,
   );
