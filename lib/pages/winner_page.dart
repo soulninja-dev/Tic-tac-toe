@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tictactor/constants.dart';
-import 'package:tictactor/pages/game_page.dart';
+import 'package:tictactoe/constants.dart';
+import 'package:tictactoe/pages/game_page.dart';
 import '../functions.dart';
 
 // ignore: must_be_immutable

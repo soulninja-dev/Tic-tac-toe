@@ -1,5 +1,5 @@
-name: tictactor
-description: A new Flutter project.
+name: tictactoe
+description: A minimalistic app to play tictactoe
 
 publish_to: "none"
 version: 1.0.0+1

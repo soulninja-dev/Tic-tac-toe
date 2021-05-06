@@ -1,4 +1,4 @@
-import 'package:tictactor/pages/game_page.dart';
+import 'package:tictactoe/pages/game_page.dart';
 
 class Functions {
   static void reset() {

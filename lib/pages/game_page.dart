@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:tictactor/constants.dart';
-import 'package:tictactor/pages/home_page.dart';
+import 'package:tictactoe/constants.dart';
+import 'package:tictactoe/pages/home_page.dart';
 import 'winner_page.dart';
 
 class GamePage extends StatefulWidget {

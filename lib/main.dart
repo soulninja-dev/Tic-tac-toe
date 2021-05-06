@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tictactor/pages/game_page.dart';
-import 'package:tictactor/pages/home_page.dart';
+import 'package:tictactoe/pages/game_page.dart';
+import 'package:tictactoe/pages/home_page.dart';
 
 void main() {
   // MyApp is getting called.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictactor/constants.dart';
+import 'package:tictactoe/constants.dart';
 
 class EnterUsername extends StatelessWidget {
   const EnterUsername({
