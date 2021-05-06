@@ -27,7 +27,7 @@ class _GamePageState extends State<GamePage> {
   Random rng = new Random();
 
   var textstyle = TextStyle(
-    fontSize: 50,
+    fontSize: SizeConfig.safeBlockHorizontal * 10,
     fontFamily: "Poppins",
     fontWeight: FontWeight.bold,
   );
@@ -47,7 +47,6 @@ class _GamePageState extends State<GamePage> {
         setState(() {
           plays++;
           text[index] = "X";
-          print(plays);
         });
       }
       if (plays == 9) {
@@ -67,7 +66,6 @@ class _GamePageState extends State<GamePage> {
         setState(() {
           plays++;
           text[index] = "O";
-          print(plays);
         });
       }
       if (plays == 9) {
@@ -156,95 +154,29 @@ class _GamePageState extends State<GamePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: SizeConfig.blockSizeVertical * 10.0),
-          Expanded(
-            child: GridView.count(
-              crossAxisSpacing: SizeConfig.safeBlockHorizontal * 5.0,
-              mainAxisSpacing: SizeConfig.safeBlockVertical * 5.0,
-              crossAxisCount: 3,
-              children: <Widget>[
-                // each TextButton is a grid which can be pressed.
-                TextButton(
-                  onPressed: () {
-                    if (text[0] == "") play(0, true);
-                  },
-                  child: Text(
-                    text[0],
-                    style: textstyle,
+
+          Container(
+            child: Expanded(
+              child: GridView.builder(
+                padding: EdgeInsets.all(3.0),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: SizeConfig.blockSizeHorizontal * 2,
+                  mainAxisSpacing: SizeConfig.blockSizeVertical * 2,
+                ),
+                itemCount: 9,
+                itemBuilder: (context, i) => SizedBox(
+                  child: TextButton(
+                    onPressed: () {
+                      if (text[i] == "") play(i, true);
+                    },
+                    child: Text(
+                      text[i],
+                      style: textstyle,
+                    ),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    if (text[1] == "") play(1, true);
-                  },
-                  child: Text(
-                    text[1],
-                    style: textstyle,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (text[2] == "") play(2, true);
-                  },
-                  child: Text(
-                    text[2],
-                    style: textstyle,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (text[3] == "") play(3, true);
-                  },
-                  child: Text(
-                    text[3],
-                    style: textstyle,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (text[4] == "") play(4, true);
-                  },
-                  child: Text(
-                    text[4],
-                    style: textstyle,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (text[5] == "") play(5, true);
-                  },
-                  child: Text(
-                    text[5],
-                    style: textstyle,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (text[6] == "") play(6, true);
-                  },
-                  child: Text(
-                    text[6],
-                    style: textstyle,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (text[7] == "") play(7, true);
-                  },
-                  child: Text(
-                    text[7],
-                    style: textstyle,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (text[8] == "") play(8, true);
-                  },
-                  child: Text(
-                    text[8],
-                    style: textstyle,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
           // the text to show what character the player is
