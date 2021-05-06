@@ -10,6 +10,8 @@ I have used Material UI for the design.
 
 
 // TODO:
-[] Multiplayer support,
-[] More settings,
+[] Multiplayer support
+
+[] More settings
+
 [] A different theme for dark and light mode.
