@@ -19,9 +19,6 @@ dev_dependencies:
 
 flutter:
   fonts:
-    - family: KiwiMaru
-      fonts:
-        - asset: fonts/KiwiMaru.ttf
     - family: Poppins
       fonts:
         - asset: fonts/Poppins.ttf

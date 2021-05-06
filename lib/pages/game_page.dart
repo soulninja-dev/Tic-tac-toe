@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/home_page.dart';
+import 'package:tictactoe/size_config.dart';
 import 'winner_page.dart';
 
 class GamePage extends StatefulWidget {
@@ -145,17 +146,20 @@ class _GamePageState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     // Scaffold so that there is place for appbar etc.
     return Scaffold(
       // stack so that we can place more than 1 item in the body
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(5, 75, 5, 0),
-            // gridview.count is a good widget to build grids.
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(height: SizeConfig.blockSizeVertical * 10.0),
+          Expanded(
             child: GridView.count(
-              crossAxisSpacing: 10.0,
-              mainAxisSpacing: 10.0,
+              crossAxisSpacing: SizeConfig.safeBlockHorizontal * 5.0,
+              mainAxisSpacing: SizeConfig.safeBlockVertical * 5.0,
               crossAxisCount: 3,
               children: <Widget>[
                 // each TextButton is a grid which can be pressed.
@@ -199,7 +203,10 @@ class _GamePageState extends State<GamePage> {
                   onPressed: () {
                     if (text[4] == "") play(4, true);
                   },
-                  child: Text(text[4], style: textstyle),
+                  child: Text(
+                    text[4],
+                    style: textstyle,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
@@ -240,19 +247,23 @@ class _GamePageState extends State<GamePage> {
               ],
             ),
           ),
-
           // the text to show what character the player is
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 420),
-              child: Text(
-                "You are: X",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "Poppins",
-                  fontSize: 25,
-                ),
-              ),
+          Text(
+            "You are: X",
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Poppins",
+              fontSize: 25,
+            ),
+          ),
+          SizedBox(
+            height: SizeConfig.blockSizeVertical * 5.0,
+          ),
+          Text(
+            "Developed by SoulNinja#7777",
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white30,
             ),
           ),
         ],
@@ -268,16 +279,3 @@ class _GamePageState extends State<GamePage> {
     );
   }
 }
-/*
-
-  - make 2 lists
-  - make a toplay var
-  - when a button is clicked, add the index to the crsp list
-  - and check if game is won, else set state.
-  - then call bot play
-  - bot play should first check if the match is won. else
-  - bot play should make a random index and check if its already taken.
-  - if not it should call itself again until it finds a proper index.
-  - once it finds the proper index, delay and setstate.
-  
-*/
