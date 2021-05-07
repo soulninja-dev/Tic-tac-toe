@@ -26,12 +26,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      // routes
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomePage(),
-        '/game': (context) => GamePage(),
-      },
+      home: HomePage(),
     );
   }
 }
