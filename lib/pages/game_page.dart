@@ -26,11 +26,32 @@ int plays = 0;
 class _GamePageState extends State<GamePage> {
   Random rng = new Random();
 
-  var textstyle = TextStyle(
-    fontSize: 50,
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.bold,
-  );
+  textStyle(double fontSize) {
+    return TextStyle(
+      fontSize: fontSize,
+      fontFamily: "Poppins",
+      color: white,
+    );
+  }
+
+  ongoBack(dynamic value) {
+    Navigator.pop(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(),
+      ),
+    );
+  }
+
+  // check who won and navigate to that screen
+  void winnerAlert(String winner) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WinnerPage(winner),
+      ),
+    ).then(ongoBack);
+  }
 
   void play(int index, bool isPlayer) {
     if (isPlayer) {
@@ -115,25 +136,6 @@ class _GamePageState extends State<GamePage> {
     return false;
   }
 
-  ongoBack(dynamic value) {
-    Navigator.pop(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ),
-    );
-  }
-
-  // check who won and navigate to that screen
-  void winnerAlert(String winner) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => WinnerPage(winner),
-      ),
-    ).then(ongoBack);
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -164,7 +166,7 @@ class _GamePageState extends State<GamePage> {
                     },
                     child: Text(
                       text[i],
-                      style: textstyle,
+                      style: textStyle(50),
                     ),
                   ),
                 ),
@@ -174,11 +176,7 @@ class _GamePageState extends State<GamePage> {
           // the text to show what character the player is
           Text(
             "You are: X",
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: "Poppins",
-              fontSize: 25,
-            ),
+            style: textStyle(25),
           ),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 5.0,
@@ -197,7 +195,10 @@ class _GamePageState extends State<GamePage> {
       appBar: AppBar(
         leading: Text(""),
         backgroundColor: bg,
-        title: Text("Tic Tac Toe"),
+        title: Text(
+          "Tic Tac Toe",
+          style: textStyle(25),
+        ),
         centerTitle: true,
       ),
     );

@@ -14,7 +14,7 @@ class EnterUsername extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       showCursor: true,
-      cursorColor: textColor,
+      cursorColor: white,
       maxLines: 1,
       keyboardType: TextInputType.name,
       textAlign: TextAlign.start,
@@ -34,7 +34,7 @@ class EnterUsername extends StatelessWidget {
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: textColor,
+            color: white,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
