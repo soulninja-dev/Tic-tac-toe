@@ -16,68 +16,56 @@ class HomePage extends StatelessWidget {
     // scaffold will have a Stack with children and spacers between.
     return Scaffold(
       backgroundColor: bg,
-      body: Stack(
-        alignment: AlignmentDirectional.centerStart,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          // safe area will omit the stuff like notch etc
-          SafeArea(
+          Text(
+            "Tic Tac Toe",
+            style: TextStyle(
+              fontSize: 55,
+              color: textColor,
+              shadows: [
+                Shadow(
+                  color: Colors.white10,
+                  offset: Offset(5, 5),
+                  blurRadius: 1.0,
+                ),
+              ],
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+            child: EnterUsername(br: _br),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
+              ),
+              color: Colors.black,
+            ),
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 22.0),
-              child: Column(
-                children: <Widget>[
-                  Spacer(),
-                  Text(
-                    "Tic Tac Toe",
-                    style: TextStyle(
-                      fontSize: 55,
-                      color: textColor,
-                      shadows: [
-                        Shadow(
-                          color: Colors.white10,
-                          offset: Offset(5, 5),
-                          blurRadius: 1.0,
-                        ),
-                      ],
-                      fontWeight: FontWeight.normal,
-                    ),
+              padding: const EdgeInsets.all(10.0),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  primary: Colors.white,
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                    fontFamily: "Poppins",
                   ),
-                  Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 70),
-                    child: EnterUsername(br: _br),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                      color: Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GamePage(),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          primary: Colors.white,
-                          textStyle: TextStyle(
-                            fontSize: 20,
-                            fontFamily: "Poppins",
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GamePage(),
-                            ),
-                          );
-                        },
-                        child: Text("Play Now"),
-                      ),
-                    ),
-                  ),
-                  Spacer(),
-                ],
+                  );
+                },
+                child: Text("Play Now"),
               ),
             ),
           ),
