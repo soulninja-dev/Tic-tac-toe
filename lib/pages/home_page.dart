@@ -13,7 +13,6 @@ class HomePage extends StatelessWidget {
   // build method
   @override
   Widget build(BuildContext context) {
-    // scaffold will have a Stack with children and spacers between.
     return Scaffold(
       backgroundColor: bg,
       body: Column(

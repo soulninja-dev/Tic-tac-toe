@@ -33,15 +33,6 @@ class _GamePageState extends State<GamePage> {
   );
 
   void play(int index, bool isPlayer) {
-    // if (toPlay == "bot") bot.add(index);
-    // if (toPlay == "player") player.add(index);
-
-    // index is the position of the button in the grid,
-    // isPlayer is true when the player clicks button and false when bot clicks button
-
-    // if its a player, then check if the box isnt already taken
-    // then setState the text of that index to "x"
-
     if (isPlayer) {
       if (text[index] == "") {
         setState(() {
@@ -56,6 +47,7 @@ class _GamePageState extends State<GamePage> {
         winnerAlert("You");
       }
       // calling botPlay so that the game can continue
+      // also checking for tiebreaker
       if (!winCheck() && plays < 9) {
         botPlay();
       }
