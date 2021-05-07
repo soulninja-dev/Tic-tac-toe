@@ -5,8 +5,6 @@ import '../constants.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  BorderRadius _br = const BorderRadius.all(Radius.circular(25.0));
-
   moveToGame(BuildContext context) {
     Navigator.push(
       context,
@@ -28,7 +26,7 @@ class HomePage extends StatelessWidget {
             "Tic Tac Toe",
             style: TextStyle(
               fontSize: 55,
-              color: textColor,
+              color: white,
               shadows: [
                 Shadow(
                   color: Colors.white10,
@@ -42,24 +40,23 @@ class HomePage extends StatelessWidget {
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-            child: EnterUsername(br: _br),
+            child: EnterUsername(br: br),
           ),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
                 Radius.circular(15),
               ),
-              color: Colors.black,
+              color: black,
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  primary: Colors.white,
+                  backgroundColor: black,
+                  primary: white,
                   textStyle: TextStyle(
                     fontSize: 20,
-                    fontFamily: "Poppins",
                   ),
                 ),
                 onPressed: () {
