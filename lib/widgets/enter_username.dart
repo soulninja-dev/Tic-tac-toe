@@ -17,7 +17,6 @@ class EnterUsername extends StatelessWidget {
       cursorColor: textColor,
       maxLines: 1,
       keyboardType: TextInputType.name,
-      cursorHeight: 28,
       textAlign: TextAlign.start,
       style: TextStyle(
         fontSize: 25,
@@ -26,20 +25,12 @@ class EnterUsername extends StatelessWidget {
       decoration: InputDecoration(
         border: new OutlineInputBorder(
           borderRadius: _br,
-          borderSide: new BorderSide(),
         ),
-        hintText: "Enter name",
         labelText: "Username",
-        hintStyle: TextStyle(
-          fontSize: 17,
-          fontFamily: "KiwiMaru",
-          fontWeight: FontWeight.bold,
-          color: Colors.white30,
-        ),
         labelStyle: TextStyle(
           fontWeight: FontWeight.normal,
           color: Colors.white54,
-          fontFamily: "KiwiMaru",
+          fontFamily: "Poppins",
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(

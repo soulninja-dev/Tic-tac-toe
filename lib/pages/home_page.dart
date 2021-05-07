@@ -10,6 +10,15 @@ class HomePage extends StatelessWidget {
 
   BorderRadius _br = const BorderRadius.all(Radius.circular(25.0));
 
+  moveToGame(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => GamePage(),
+      ),
+    );
+  }
+
   // build method
   @override
   Widget build(BuildContext context) {
@@ -57,12 +66,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => GamePage(),
-                    ),
-                  );
+                  moveToGame(context);
                 },
                 child: Text("Play Now"),
               ),
