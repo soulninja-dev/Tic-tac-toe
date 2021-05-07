@@ -5,9 +5,6 @@ import '../constants.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  // variables
-  static const changeButton = false;
-
   BorderRadius _br = const BorderRadius.all(Radius.circular(25.0));
 
   moveToGame(BuildContext context) {
