@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoe/pages/game_page.dart';
+import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/home_page.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
-            backgroundColor: new Color(0xff2D5F6E),
+            backgroundColor: btnbg,
             elevation: 5.0,
           ),
         ),
