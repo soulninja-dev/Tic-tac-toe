@@ -3,7 +3,6 @@ description: A minimalistic app to play tictactoe
 
 publish_to: "none"
 version: 1.0.0+1
-uses-material-design: true
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
@@ -18,6 +17,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  uses-material-design: true
   fonts:
     - family: Poppins
       fonts:
