@@ -3,8 +3,8 @@ import 'package:tictactoe/constants.dart';
 
 class EnterUsername extends StatelessWidget {
   const EnterUsername({
-    Key key,
-    @required BorderRadius br,
+    Key? key,
+    required BorderRadius br,
   })  : _br = br,
         super(key: key);
 

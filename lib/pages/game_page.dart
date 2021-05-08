@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/home_page.dart';
-import 'package:tictactoe/size_config.dart';
 import 'winner_page.dart';
 
 class GamePage extends StatefulWidget {
@@ -138,8 +137,6 @@ class _GamePageState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-
     // Scaffold so that there is place for appbar etc.
     return Scaffold(
       // stack so that we can place more than 1 item in the body
@@ -147,7 +144,7 @@ class _GamePageState extends State<GamePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: SizeConfig.blockSizeVertical * 10.0),
+          SizedBox(height: 10.0),
 
           Container(
             child: Expanded(
@@ -155,8 +152,8 @@ class _GamePageState extends State<GamePage> {
                 padding: EdgeInsets.all(3.0),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  crossAxisSpacing: SizeConfig.blockSizeHorizontal * 2,
-                  mainAxisSpacing: SizeConfig.blockSizeVertical * 2,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 5,
                 ),
                 itemCount: 9,
                 itemBuilder: (context, i) => SizedBox(
@@ -179,7 +176,7 @@ class _GamePageState extends State<GamePage> {
             style: textStyle(25),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 5.0,
+            height: 5.0,
           ),
           Text(
             "Developed by SoulNinja#7777",

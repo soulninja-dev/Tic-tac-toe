@@ -5,7 +5,7 @@ import '../functions.dart';
 
 // ignore: must_be_immutable
 class WinnerPage extends StatelessWidget {
-  String winner;
+  String? winner;
   WinnerPage(String winner) {
     this.winner = winner;
   }
