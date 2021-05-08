@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   moveToGame(context);
                 },
-                child: Text("Play Now"),
+                child: Text("Play"),
               ),
             ),
           ),
