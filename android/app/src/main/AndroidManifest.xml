@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tictactoe">
+    package="co.soulninja.tictactoe">
    <application
         android:label="Tictactoe"
         android:icon="@mipmap/launcher_icon">
