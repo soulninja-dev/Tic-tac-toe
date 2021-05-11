@@ -9,18 +9,6 @@ class WinnerPage extends StatelessWidget {
   WinnerPage(String winner) {
     this.winner = winner;
   }
-  String checkWinner() {
-    if (winner == "tie") {
-      return "Tie Breaker!!";
-    }
-    if (winner == "Computer") {
-      return "You lost :(";
-    }
-    if (winner == "You") {
-      return "Yay! you won";
-    }
-    return "code will never reach here lol";
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +20,7 @@ class WinnerPage extends StatelessWidget {
         children: <Widget>[
           Center(
             child: Text(
-              checkWinner(),
+              Functions.checkWinner(winner),
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
