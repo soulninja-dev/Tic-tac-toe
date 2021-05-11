@@ -20,7 +20,7 @@ class _GamePagev2State extends State<GamePagev2> {
 
     game screen:
         - UI: Grid, You are, Text.
-        - Grid's items are textbuttons. with default empty text.
+        - Grid's items are text buttons. with default empty text.
         - onClick of a button:
             - await the function calls.
             - set state of board
@@ -59,20 +59,30 @@ class _GamePagev2State extends State<GamePagev2> {
 
  */
 
+  String humanLetter = "X";
+  String botLetter = "O";
   // VARIABLES
-  late List<String> humanPlays;
-  late List<String> botPlays;
+  List<String> humanPlays = [];
+  List<String> botPlays = [];
   List<String> board = ["","","","","","","","",""];
 
   // FUNCTIONS
 
-  Future<void> clicked (int index) async {
-    print("clicked $index");
+  void clicked (int index) async {
+
+    // set state of the board
+    setState(() {
+      humanPlays.add(index.toString());
+      board[index] = humanLetter;
+      print(humanPlays);
+      print(board);
+    });
+    int result = await whoIsWinner();
   }
 
-  Future<int> whoIsWinner()
-  async {
-    return 0;
+  whoIsWinner() async{
+      if(!board.contains("X") && !board.contains("O")) return 0;
+      else return 1;
   }
 
   Future<void> winCheck(int result) async{
@@ -120,9 +130,12 @@ class _GamePagev2State extends State<GamePagev2> {
               itemCount: 9,
               itemBuilder: (context, i) => SizedBox(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if(board[i]=="")
+                    clicked(i);
+                  },
                   child: Text(
-                    "",
+                    board[i],
                     style: textStyle(50),
                   ),
                 ),
