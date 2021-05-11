@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoe/pages/game_page.dart';
+import 'package:tictactoe/pages/game_page_v2.dart';
 import 'package:tictactoe/widgets/enter_username.dart';
 import '../constants.dart';
 
@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => GamePage(),
+        builder: (context) => GamePagev2(),
       ),
     );
   }
