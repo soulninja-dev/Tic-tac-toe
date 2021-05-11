@@ -23,7 +23,7 @@ class Functions {
     if (winner == "tie") {
       return "Tie Breaker!!";
     }
-    if (winner == "Computer") {
+    if (winner == "bot") {
       return "You lost :(";
     }
     if (winner == "You") {

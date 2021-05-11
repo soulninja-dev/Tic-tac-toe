@@ -1,5 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:tictactoe/constants.dart';
+import 'package:tictactoe/pages/winner_page.dart';
+
+import 'home_page.dart';
 
 class GamePagev2 extends StatefulWidget {
   const GamePagev2({Key? key}) : super(key: key);
@@ -9,7 +14,7 @@ class GamePagev2 extends StatefulWidget {
 }
 
 class _GamePagev2State extends State<GamePagev2> {
-
+  Random rng = new Random();
 /*
 
     game logic:
@@ -59,66 +64,131 @@ class _GamePagev2State extends State<GamePagev2> {
     void botPlay()
 
  */
-
+  bool play = true;
+  bool isGameOver = false;
   String humanLetter = "X";
   String botLetter = "O";
   // VARIABLES
   List<String> humanPlays = [];
   List<String> botPlays = [];
-  List<String> board = ["","","","","","","","",""];
+  List<String> board = ["", "", "", "", "", "", "", "", ""];
 
   // FUNCTIONS
 
-  bool existsHuman(List<String> arr)
-  {
-    if(humanPlays.contains(arr[0]) && humanPlays.contains(arr[1]) &&
-        humanPlays.contains(arr[2]))
-      return true;
-    return false;
-  }
-
-  bool existsBot(List<String> arr)
-  {
-    if(botPlays.contains(arr[0]) && botPlays.contains(arr[1]) &&
-        botPlays.contains(arr[2]))
-      return true;
-    return false;
-  }
-  void clicked (int index) async {
-
+  void clicked(int index) async {
     // set state of the board
     setState(() {
       humanPlays.add(index.toString());
       board[index] = humanLetter;
-      print(humanPlays);
-      print(board);
     });
     int result = await whoIsWinner();
-    print("result: $result");
+    await winCheck(result);
+    if(!isGameOver)
+      await botPlay();
   }
 
-  whoIsWinner() async{
-      // board is empty
-      if(!board.contains("X") && !board.contains("O")) return 0;
-      // human win check
-      else if(existsHuman(["0","1","2"]) || existsHuman(["0","3","6"]) ||existsHuman(["7","4","1"]) ||existsHuman(["8","5","2"]) ||existsHuman(["3","4","5"]) ||existsHuman(["6","7","8"]) ||existsHuman(["0","4","8"]) ||existsHuman(["2","4","6"]))
-        return 1;
-      // bot win check
-      else if(existsBot(["0","1","2"]) || existsBot(["0","3","6"]) ||existsBot(["7","4","1"]) ||existsBot(["8","5","2"]) ||existsBot(["3","4","5"]) ||existsBot(["6","7","8"]) ||existsBot(["0","4","8"]) ||existsBot(["2","4","6"]))
-        return 2;
-      // tie check
-      else if(!board.contains(""))
-        return 3;
-      // no one has won yet, game will continue
-      else return 0;
+  Future<int> whoIsWinner() async {
+    // board is empty
+    if (!board.contains("X") && !board.contains("O"))
+      return 0;
+    // human win check
+    else if (existsHuman(["0", "1", "2"]) ||
+        existsHuman(["0", "3", "6"]) ||
+        existsHuman(["7", "4", "1"]) ||
+        existsHuman(["8", "5", "2"]) ||
+        existsHuman(["3", "4", "5"]) ||
+        existsHuman(["6", "7", "8"]) ||
+        existsHuman(["0", "4", "8"]) ||
+        existsHuman(["2", "4", "6"]))
+      return 1;
+    // bot win check
+    else if (existsBot(["0", "1", "2"]) ||
+        existsBot(["0", "3", "6"]) ||
+        existsBot(["7", "4", "1"]) ||
+        existsBot(["8", "5", "2"]) ||
+        existsBot(["3", "4", "5"]) ||
+        existsBot(["6", "7", "8"]) ||
+        existsBot(["0", "4", "8"]) ||
+        existsBot(["2", "4", "6"]))
+      return 2;
+    // tie check
+    else if (!board.contains(""))
+      return 3;
+    // no one has won yet, game will continue
+    else
+      return 0;
   }
 
-  Future<void> winCheck(int result) async{
-    print("haha");
+  winCheck(int result) async {
+    switch (result) {
+      // game will continue
+      case 0:
+        break;
+      case 1:
+        moveToWinner("You");
+        isGameOver = true;
+        break;
+      case 2:
+        moveToWinner("bot");
+        isGameOver = true;
+        break;
+      case 3:
+        moveToWinner("tie");
+        isGameOver = true;
+        break;
+      default:
+        break;
+    }
+  }
+int randomIndex = 0;
+    void getRandomIndex() {
+    randomIndex = rng.nextInt(8);
+    if (board[randomIndex] != "") getRandomIndex();
   }
 
-  Future<void> botPlay() async {
-    print("bot played");
+  botPlay() async {
+      getRandomIndex();
+    await Future.delayed(Duration(milliseconds: 300), () {
+      setState(() {
+        botPlays.add(randomIndex.toString());
+        board[randomIndex] = botLetter;
+        play = true;
+      });
+    });
+    int result = await whoIsWinner();
+    await winCheck(result);
+  }
+
+  ongoBack(dynamic value) {
+    Navigator.pop(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(),
+      ),
+    );
+  }
+
+  moveToWinner(String winner) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WinnerPage(winner),
+      ),
+    ).then(ongoBack);
+  }
+
+  bool existsHuman(List<String> arr) {
+    if (humanPlays.contains(arr[0]) &&
+        humanPlays.contains(arr[1]) &&
+        humanPlays.contains(arr[2])) return true;
+    return false;
+  }
+
+  bool existsBot(List<String> arr) {
+    if (botPlays.contains(arr[0]) &&
+        botPlays.contains(arr[1]) &&
+        botPlays.contains(arr[2])) return true;
+    return false;
   }
 
   textStyle(double fontSize) {
@@ -128,6 +198,7 @@ class _GamePagev2State extends State<GamePagev2> {
       color: white,
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,7 +208,7 @@ class _GamePagev2State extends State<GamePagev2> {
         leading: Text(""),
         title: Text(
           "Tic Tac Toe",
-          style:textStyle(25),
+          style: textStyle(25),
         ),
         centerTitle: true,
       ),
@@ -159,8 +230,8 @@ class _GamePagev2State extends State<GamePagev2> {
               itemBuilder: (context, i) => SizedBox(
                 child: TextButton(
                   onPressed: () {
-                    if(board[i]=="")
-                    clicked(i);
+                    if (play && board[i] == "") clicked(i);
+                    play = false;
                   },
                   child: Text(
                     board[i],
