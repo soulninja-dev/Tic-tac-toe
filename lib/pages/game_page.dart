@@ -147,23 +147,26 @@ class _GamePageState extends State<GamePage> {
           SizedBox(height: 10.0),
 
           Container(
-            child: Expanded(
-              child: GridView.builder(
-                padding: EdgeInsets.all(3.0),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                ),
-                itemCount: 9,
-                itemBuilder: (context, i) => SizedBox(
-                  child: TextButton(
-                    onPressed: () {
-                      if (text[i] == "") play(i, true);
-                    },
-                    child: Text(
-                      text[i],
-                      style: textStyle(50),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 50.0),
+              child: Expanded(
+                child: GridView.builder(
+                  padding: EdgeInsets.all(3.0),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                  ),
+                  itemCount: 9,
+                  itemBuilder: (context, i) => SizedBox(
+                    child: TextButton(
+                      onPressed: () {
+                        if (text[i] == "") play(i, true);
+                      },
+                      child: Text(
+                        text[i],
+                        style: textStyle(50),
+                      ),
                     ),
                   ),
                 ),
