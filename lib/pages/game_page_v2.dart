@@ -64,11 +64,14 @@ class _GamePagev2State extends State<GamePagev2> {
     void botPlay()
 
  */
+
+  // VARIABLES
+
   bool play = true;
   bool isGameOver = false;
   String humanLetter = "X";
   String botLetter = "O";
-  // VARIABLES
+  int randomIndex = 0;
   List<String> humanPlays = [];
   List<String> botPlays = [];
   List<String> board = ["", "", "", "", "", "", "", "", ""];
@@ -140,8 +143,8 @@ class _GamePagev2State extends State<GamePagev2> {
         break;
     }
   }
-int randomIndex = 0;
-    void getRandomIndex() {
+
+  void getRandomIndex() {
     randomIndex = rng.nextInt(8);
     if (board[randomIndex] != "") getRandomIndex();
   }
