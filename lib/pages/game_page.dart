@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/home_page.dart';
+import '../functions.dart';
 import 'winner_page.dart';
 
 class GamePage extends StatefulWidget {
@@ -63,12 +64,12 @@ class _GamePageState extends State<GamePage> {
       if (plays == 9) {
         winnerAlert("tie");
       }
-      if (winCheck()) {
+      if (Functions.winCheck(text)) {
         winnerAlert("You");
       }
       // calling botPlay so that the game can continue
       // also checking for tiebreaker
-      if (!winCheck() && plays < 9) {
+      if (!Functions.winCheck(text) && plays < 9) {
         botPlay();
       }
     } else {
@@ -83,7 +84,7 @@ class _GamePageState extends State<GamePage> {
       if (plays == 9) {
         winnerAlert("tie");
       }
-      if (winCheck()) {
+      if (Functions.winCheck(text)) {
         winnerAlert("Computer");
       }
     }
@@ -99,42 +100,6 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
-  bool winCheck() {
-    // 012
-    if (text[0] != "" && text[0] == text[1] && text[1] == text[2]) {
-      return true;
-    }
-    // 345
-    else if (text[3] != "" && text[3] == text[4] && text[4] == text[5]) {
-      return true;
-    }
-    // 678
-    else if (text[6] != "" && text[6] == text[7] && text[7] == text[8]) {
-      return true;
-    }
-    // 036
-    else if (text[0] != "" && text[0] == text[3] && text[3] == text[6]) {
-      return true;
-    }
-    // 147
-    else if (text[1] != "" && text[1] == text[4] && text[4] == text[7]) {
-      return true;
-    }
-    // 258
-    else if (text[2] != "" && text[2] == text[5] && text[5] == text[8]) {
-      return true;
-    }
-    // 048
-    else if (text[0] != "" && text[0] == text[4] && text[4] == text[8]) {
-      return true;
-    }
-    // 246
-    else if (text[2] != "" && text[2] == text[4] && text[4] == text[6]) {
-      return true;
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     // Scaffold so that there is place for appbar etc.
@@ -144,48 +109,46 @@ class _GamePageState extends State<GamePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 10.0),
-
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: Expanded(
-                child: GridView.builder(
-                  padding: EdgeInsets.all(3.0),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5,
-                  ),
-                  itemCount: 9,
-                  itemBuilder: (context, i) => SizedBox(
-                    child: TextButton(
-                      onPressed: () {
-                        if (text[i] == "") play(i, true);
-                      },
-                      child: Text(
-                        text[i],
-                        style: textStyle(50),
-                      ),
-                    ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 5),
+            child: GridView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.all(3.0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemCount: 9,
+              itemBuilder: (context, i) => SizedBox(
+                child: TextButton(
+                  onPressed: () {
+                    if (text[i] == "") play(i, true);
+                  },
+                  child: Text(
+                    text[i],
+                    style: textStyle(50),
                   ),
                 ),
               ),
             ),
           ),
           // the text to show what character the player is
-          Text(
-            "You are: X",
-            style: textStyle(25),
+          Expanded(
+            flex: 1,
+            child: Text(
+              "You are: X",
+              style: textStyle(25),
+            ),
           ),
-          SizedBox(
-            height: 5.0,
-          ),
-          Text(
-            "Developed by SoulNinja#7777",
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.white30,
+          Expanded(
+            flex: 0,
+            child: Text(
+              "Developed by SoulNinja#7777",
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.white30,
+              ),
             ),
           ),
         ],
