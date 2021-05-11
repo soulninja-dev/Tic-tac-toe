@@ -53,7 +53,15 @@ class _GamePageState extends State<GamePage> {
     ).then(ongoBack);
   }
 
-  void play(int index, bool isPlayer) {
+  void play(int index, bool isPlayer) async{
+    /*
+       [if] checks ifPlayer is calling the function, if yes then another check [if] text[index] is empty, if yes then state
+            is set and played as X.
+       [if] now that play is over. if plays is 9, then winnerAlert is called with tie.
+       [if] winCheck is called. if won then winnerAlert is called with "You".
+       [if] game isnt over and also it isnt a tie, then wait 0.5 sec then botPlay is called.
+     */
+
     if (isPlayer) {
       if (text[index] == "") {
         setState(() {
@@ -67,10 +75,8 @@ class _GamePageState extends State<GamePage> {
       if (Functions.winCheck(text)) {
         winnerAlert("You");
       }
-      // calling botPlay so that the game can continue
-      // also checking for tiebreaker
       if (!Functions.winCheck(text) && plays < 9) {
-        botPlay();
+        await Future.delayed(Duration(milliseconds: 500), () {botPlay();});
       }
     } else {
       // here only the bot can come in.
@@ -90,15 +96,16 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
-  void botPlay() {
+   botPlay() {
     // this function makes a random number using the nextInt function of Random class.
-    int randomIndex = rng.nextInt(8);
-    if (text[randomIndex] != "") {
-      botPlay();
-    } else {
-      play(randomIndex, false);
+    // giving delay so that the player cannot touch twice.
+      int randomIndex = rng.nextInt(8);
+      if (text[randomIndex] != "") {
+        botPlay();
+      } else {
+        play(randomIndex, false);
+      }
     }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +142,7 @@ class _GamePageState extends State<GamePage> {
           ),
           // the text to show what character the player is
           Expanded(
-            flex: 1,
+            flex: 0,
             child: Text(
               "You are: X",
               style: textStyle(25),
