@@ -230,8 +230,10 @@ int randomIndex = 0;
               itemBuilder: (context, i) => SizedBox(
                 child: TextButton(
                   onPressed: () {
-                    if (play && board[i] == "") clicked(i);
-                    play = false;
+                    if (play && board[i] == "" && !botPlays.contains(i.toString())) {
+                      clicked(i);
+                      play = false;
+                    }
                   },
                   child: Text(
                     board[i],
