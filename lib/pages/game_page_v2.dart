@@ -4,33 +4,28 @@ import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/winner_page.dart';
 import 'home_page.dart';
 
-class GamePagev2 extends StatefulWidget {
-  const GamePagev2({Key? key}) : super(key: key);
 
+class GamePage extends StatefulWidget {
+  const GamePage({Key? key}) : super(key: key);
   @override
-  _GamePagev2State createState() => _GamePagev2State();
+  _GamePageState createState() => _GamePageState();
 }
 
-class _GamePagev2State extends State<GamePagev2> {
+// VARIABLES
+
+bool play = true;
+bool isGameOver = false;
+String humanLetter = "X";
+String botLetter = "O";
+int randomIndex = 0;
+List<String> humanPlays = [];
+List<String> botPlays = [];
+List<String> board = ["", "", "", "", "", "", "", "", ""];
+
+class _GamePageState extends State<GamePage> {
   Random rng = new Random();
-/*
-
-
- */
-
-  // VARIABLES
-
-  bool play = true;
-  bool isGameOver = false;
-  String humanLetter = "X";
-  String botLetter = "O";
-  int randomIndex = 0;
-  List<String> humanPlays = [];
-  List<String> botPlays = [];
-  List<String> board = ["", "", "", "", "", "", "", "", ""];
 
   // FUNCTIONS
-
   void clicked(int index) async {
     // set state of the board
     setState(() {
@@ -153,7 +148,7 @@ class _GamePagev2State extends State<GamePagev2> {
       fontFamily: "Poppins",
       color: white,
     );
-  }
+}
 
   // UI
   @override

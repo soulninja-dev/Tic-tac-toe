@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => GamePagev2(),
+        builder: (context) => GamePage(),
       ),
     );
   }
