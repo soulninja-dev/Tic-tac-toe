@@ -23,6 +23,7 @@ class WinnerPage extends StatelessWidget {
     }
     return "code will never reach here lol";
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +48,7 @@ class WinnerPage extends StatelessWidget {
             child: TextButton(
               onPressed: () {
               Functions.reset();
-                Navigator.pop(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => GamePage(),

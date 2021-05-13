@@ -2,8 +2,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/winner_page.dart';
-import 'home_page.dart';
+import 'package:tictactoe/functions.dart';
 
+import 'home_page.dart';
 
 class GamePage extends StatefulWidget {
   const GamePage({Key? key}) : super(key: key);
@@ -125,7 +126,7 @@ class _GamePageState extends State<GamePage> {
       MaterialPageRoute(
         builder: (context) => WinnerPage(winner),
       ),
-    ).then(ongoBack);
+    );
   }
 
   bool existsHuman(List<String> arr) {
@@ -149,6 +150,22 @@ class _GamePageState extends State<GamePage> {
       color: white,
     );
 }
+
+
+  // init and dispose
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      Functions.reset();
+    });
+  }
+
+  @override
+  void dispose() {
+      Functions.reset();
+    super.dispose();
+  }
 
   // UI
   @override
