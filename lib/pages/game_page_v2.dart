@@ -35,8 +35,7 @@ class _GamePageState extends State<GamePage> {
     });
     int result = await whoIsWinner();
     await winCheck(result);
-    if(!isGameOver)
-      await botPlay();
+    if (!isGameOver) await botPlay();
   }
 
   Future<int> whoIsWinner() async {
@@ -99,7 +98,7 @@ class _GamePageState extends State<GamePage> {
   }
 
   botPlay() async {
-      getRandomIndex();
+    getRandomIndex();
     await Future.delayed(Duration(milliseconds: 300), () {
       setState(() {
         botPlays.add(randomIndex.toString());
@@ -120,12 +119,21 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
-  moveToWinner(String winner) {
+  moveToHome(dynamic value) {
+    Navigator.pop(
+      context,
+      ModalRoute.withName('/'),
+    );
+  }
+
+   moveToWinner(String winner) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => WinnerPage(winner),
       ),
+    ).then(
+      moveToHome,
     );
   }
 
@@ -149,22 +157,6 @@ class _GamePageState extends State<GamePage> {
       fontFamily: "Poppins",
       color: white,
     );
-}
-
-
-  // init and dispose
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      Functions.reset();
-    });
-  }
-
-  @override
-  void dispose() {
-      Functions.reset();
-    super.dispose();
   }
 
   // UI
@@ -199,7 +191,9 @@ class _GamePageState extends State<GamePage> {
               itemBuilder: (context, i) => SizedBox(
                 child: TextButton(
                   onPressed: () {
-                    if (play && board[i] == "" && !botPlays.contains(i.toString())) {
+                    if (play &&
+                        board[i] == "" &&
+                        !botPlays.contains(i.toString())) {
                       clicked(i);
                       play = false;
                     }

@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:tictactoe/pages/game_page_v2.dart';
 import 'package:tictactoe/widgets/enter_username.dart';
 import '../constants.dart';
+import '../functions.dart';
 
 // ignore: must_be_immutable
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   moveToGame(BuildContext context) {
+    Functions.reset();
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -13,8 +20,8 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+int selectedValue = 0;
 
-  // build method
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +32,7 @@ class HomePage extends StatelessWidget {
           Text(
             "Tic Tac Toe",
             style: TextStyle(
-              fontSize: 55,
+              fontSize: 50,
               color: white,
               shadows: [
                 Shadow(
@@ -66,7 +73,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          
         ],
       ),
     );

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/constants.dart';
-import 'package:tictactoe/pages/game_page_v2.dart';
-
 import '../functions.dart';
 
 // ignore: must_be_immutable
@@ -47,13 +45,8 @@ class WinnerPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 50),
             child: TextButton(
               onPressed: () {
-              Functions.reset();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GamePage(),
-                  ),
-                );
+                Functions.reset();
+                Navigator.pop(context);
               },
               child: Text(
                 "Play again",

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/home_page.dart';
 
+import 'pages/game_page_v2.dart';
+
 void main() {
   // MyApp is getting called.
   runApp(MyApp());
@@ -26,7 +28,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomePage(),
+      routes: {
+        '/': (context) => HomePage(),
+        '/game': (context) => GamePage(),
+      }
     );
   }
 }
