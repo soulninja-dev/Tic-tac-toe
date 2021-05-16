@@ -126,7 +126,7 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
-   moveToWinner(String winner) {
+  moveToWinner(String winner) {
     Navigator.push(
       context,
       MaterialPageRoute(
