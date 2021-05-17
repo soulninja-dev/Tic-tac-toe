@@ -2,7 +2,7 @@ name: tictactoe
 description: A minimalistic app to play tictactoe
 
 publish_to: "none"
-version: 1.0.0+1
+version: 2.0.0+1
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
