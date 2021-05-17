@@ -4,6 +4,7 @@ import 'package:tictactoe/constants.dart';
 import 'package:tictactoe/pages/winner_page.dart';
 import 'package:tictactoe/functions.dart';
 
+import '../ai.dart';
 import 'home_page.dart';
 
 class GamePage extends StatefulWidget {
@@ -35,10 +36,10 @@ class _GamePageState extends State<GamePage> {
     });
     int result = await whoIsWinner();
     await winCheck(result);
-    if (!isGameOver) await botPlay();
+    if (!isGameOver) await aiPlay();
   }
 
-  Future<int> whoIsWinner() async {
+  whoIsWinner() {
     // board is empty
     if (!board.contains("X") && !board.contains("O"))
       return 0;
@@ -157,6 +158,130 @@ class _GamePageState extends State<GamePage> {
       fontFamily: "Poppins",
       color: white,
     );
+  }
+
+  int findResult(List<String> game) {
+    // Check rows
+    for(int i=0; i<9; i+=3) {
+      if (game[i] == game[i+1] && game[i+1] == game[i+2] && game[i] != '') {
+        if (game[i] == 'O') {
+          return 1;
+        } else if (game[i] == 'X') {
+          return 2;
+        }
+      }
+    }
+
+    // Check columns
+    for(int i=0; i<3; i++) {
+      if (game[i] == game[i+3] && game[i+3] == game[i+6] && game[i] != '') {
+        if (game[i] == 'O') {
+          return 1;
+        } else if (game[i] == 'X') {
+          return 2;
+        }
+      }
+    }
+
+    // Check primary diagonal
+    if (game[0] == game[4] && game[4] == game[8] && game[0] != '') {
+      if (game[0] == 'O') {
+        return 1;
+      } else if (game[0] == 'X') {
+        return 2;
+      }
+    }
+
+    // Check secondary diagonal
+    else if (game[2] == game[4] && game[4] == game[6] && game[2] != '') {
+      if (game[2] == 'O') {
+        return 1;
+      } else if (game[2] == 'X') {
+        return 2;
+      }
+    }
+
+    // Check for empty spaces, if found -> game not over
+    for(int i=0; i<9; i++) {
+      if (game[i] == '')
+        return -1;
+    }
+
+    // If no empty spaces and no winner then game is tied
+    return 0;
+  }
+
+  int depthScore(List<String> board, int depth) {
+    int result = findResult(board);
+    // human
+    if (result == 1)
+      return 10 + depth;
+    else if (result == 2)
+      return depth - 10;
+    return 0;
+  }
+
+  bool gameEnd(List<String> board) {
+    var result = findResult(board);
+    // ignore: unrelated_type_equality_checks
+    if(result == -1) {
+      return false;
+    }
+    return true;
+  }
+
+  Ai min(List<String> board, int depth) {
+    if (gameEnd(board))
+      return Ai(score: depthScore(board, depth), index: -1);
+
+    Ai mini = new Ai(score: 1000, index: -1);
+
+    for(int i=0;i<=8;i++) {
+      if (board[i] == '') {
+        board[i] = 'X';
+        Ai current = max(board, depth + 1);
+        if (current.score < mini.score) {
+          mini.score = current.score;
+          mini.index = i;
+        }
+        board[i] = "";
+      }
+    }
+    return mini;
+  }
+
+  Ai max(List<String> board, int depth) {
+    if(gameEnd(board))
+      return Ai(score: depthScore(board, depth), index: -1);
+
+    Ai maxi = new Ai(score: -1000, index: -1);
+    for(int i =0;i<=8;i++)
+      {
+        if(board[i] == "")
+          {
+            board[i] = "O";
+            Ai current = min(board, depth+1);
+            if(current.score > maxi.score) {
+              maxi.score = current.score;
+              maxi.index = i;
+            }
+            board[i] = "";
+          }
+      }
+    return maxi;
+  }
+
+  aiPlay() async {
+    await Future.delayed(Duration(milliseconds: 300), () {
+      Ai move = min(board, 0);
+      setState(() {
+       botPlays.add(move.index.toString());
+       board[move.index] = botLetter;
+       play = true;
+      });
+    });
+    int result = await whoIsWinner();
+    await winCheck(result);
   }
 
   // UI
