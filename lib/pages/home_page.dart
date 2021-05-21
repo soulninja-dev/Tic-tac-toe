@@ -54,7 +54,7 @@ int selectedValue = 0;
               borderRadius: BorderRadius.all(
                 Radius.circular(15),
               ),
-              color: black,
+              color: white,
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
